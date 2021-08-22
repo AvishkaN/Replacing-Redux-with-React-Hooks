@@ -1,37 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import ProductItem from '../components/Products/ProductItem';
+import { ProductsContext } from './../components/context/context-productss';
 import './Products.css';
 
 const Products = props => {
-  const productList =  [
-    {
-      id: 'p1',
-      title: 'Red Scarf',
-      description: 'A pretty red scarf.',
-      isFavorite: false
-    },
-    {
-      id: 'p2',
-      title: 'Blue T-Shirt',
-      description: 'A pretty blue t-shirt.',
-      isFavorite: false
-    },
-    {
-      id: 'p3',
-      title: 'Green Trousers',
-      description: 'A pair of lightly green trousers.',
-      isFavorite: false
-    },
-    {
-      id: 'p4',
-      title: 'Orange Hat',
-      description: 'Street style! An orange hat.',
-      isFavorite: false
-    }
-  ]
+  const productList = useContext(ProductsContext).products;
   return (
     <ul className="products-list">
+      {console.log(`rendering...`)}
       {productList.map(prod => (
         <ProductItem
           key={prod.id}

@@ -1,36 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {ProductsContext} from '../components/context/context-productss';
 
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
 
 const Favorites = props => {
-  const favoriteProducts =  [
-    {
-      id: 'p1',
-      title: 'Red Scarf',
-      description: 'A pretty red scarf.',
-      isFavorite: false
-    },
-    {
-      id: 'p2',
-      title: 'Blue T-Shirt',
-      description: 'A pretty blue t-shirt.',
-      isFavorite: false
-    },
-    {
-      id: 'p3',
-      title: 'Green Trousers',
-      description: 'A pair of lightly green trousers.',
-      isFavorite: false
-    },
-    {
-      id: 'p4',
-      title: 'Orange Hat',
-      description: 'Street style! An orange hat.',
-      isFavorite: false
-    }
-  ];
+  const productCTX= useContext(ProductsContext);
+  const favoriteProducts =productCTX.products.filter(product=>product.isFavorite===true);
   let content = <p className="placeholder">Got no favorites yet!</p>;
+  
   if (favoriteProducts.length > 0) {
     content = (
       <ul className="products-list">
